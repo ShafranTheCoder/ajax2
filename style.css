@@ -1,0 +1,58 @@
+body {
+  font-family: 'Lato', sans-serif;
+  font-weight: normal;
+  box-sizing: border-box;
+  background-color: wheat;
+  color: white;
+
+
+  background: linear-gradient(270deg, #b314a3, #eb6411);
+background-size: 400% 400%;
+
+-webkit-animation: BGAnimation 30s ease infinite;
+-moz-animation: BGAnimation 30s ease infinite;
+-o-animation: BGAnimation 30s ease infinite;
+animation: BGAnimation 30s ease infinite;
+
+
+}
+#root {
+  
+}
+.card {
+  padding: 10px;
+  margin: 10px;
+}
+#root div {
+  min-width: 300px;
+  border: 1px white solid;
+}
+button {
+  border: 1px solid white;
+  border-radius: 7px;
+  cursor: pointer;
+  background-color: transparent;
+  padding: 10px;
+  color: white;
+}
+
+@-webkit-keyframes BGAnimation {
+  0%{background-position:0% 50%}
+  50%{background-position:100% 50%}
+  100%{background-position:0% 50%}
+}
+@-moz-keyframes BGAnimation {
+  0%{background-position:0% 50%}
+  50%{background-position:100% 50%}
+  100%{background-position:0% 50%}
+}
+@-o-keyframes BGAnimation {
+  0%{background-position:0% 50%}
+  50%{background-position:100% 50%}
+  100%{background-position:0% 50%}
+}
+@keyframes BGAnimation { 
+  0%{background-position:0% 50%}
+  50%{background-position:100% 50%}
+  100%{background-position:0% 50%}
+}
