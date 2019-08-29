@@ -4,14 +4,13 @@ $.ajax({
   success: function (data) {
     let heroesList = [...data.results];
 
-    heroesList.forEach((hero) => {
+    heroesList.forEach((hero, index) => {
       let card = document.createElement('div');
       card.classList.add('card')
-
       let heroNamePlace = document.createElement('h3');
       heroNamePlace.textContent = hero.name;
       card.appendChild(heroNamePlace);
-
+      card.dataset.index = index;
       let heroGenderPlace = document.createElement('p');
       heroGenderPlace.classList.add('heroGender')
       heroGenderPlace.textContent = hero.gender;
@@ -29,25 +28,33 @@ $.ajax({
           }
         })
       }
-      if (hero.starships) {
+      if (hero.starships.length !== 0) {
+        console.log(hero.name, hero.starships);
         let starshipsShowButton = document.createElement('button');
         starshipsShowButton.textContent = 'Show starships';
         card.appendChild(starshipsShowButton);
-        starshipsShowButton.addEventListener('click', function () {
+        starshipsShowButton.addEventListener('click', function (e) {
+          let target = +e.target.parentNode.dataset.index;
           card.removeChild(starshipsShowButton);
+          let starshipsPlaceHolder = document.createElement('h3');
+          starshipsPlaceHolder.textContent = 'Piloted starships: ';
           let starshipsList = document.createElement('ul')
           hero.starships.forEach((starship) => {
             $.ajax({
               url: starship,
               success: function (data) {
                 let starshipName = data.name;
-                let starshipitem = document.createElement('li');
-                starshipitem.textContent = starshipName;
-                starshipsList.appendChild(starshipitem);
+                let starshipItem = document.createElement('li');
+                let starshipItemLink = document.createElement('a');
+
+                starshipItemLink.textContent = starshipName;
+                starshipItem.appendChild(starshipItemLink);
+                starshipsList.appendChild(starshipItem);
               }
             })
           })
-
+          starshipsPlaceHolder.appendChild(starshipsList);
+          card.appendChild(starshipsPlaceHolder);
         })
       }
 

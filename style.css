@@ -35,6 +35,9 @@ button {
   padding: 10px;
   color: white;
 }
+a {
+  cursor: pointer;
+}
 
 @-webkit-keyframes BGAnimation {
   0%{background-position:0% 50%}
